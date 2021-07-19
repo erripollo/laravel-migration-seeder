@@ -14,7 +14,9 @@ class PackageController extends Controller
      */
     public function index()
     {
-        //
+        $packages = Package::all();
+
+        return view('package.index', compact('packages'));
     }
 
     /**
@@ -46,7 +48,7 @@ class PackageController extends Controller
      */
     public function show(Package $package)
     {
-        //
+        return view('package.show', compact('package'));
     }
 
     /**
