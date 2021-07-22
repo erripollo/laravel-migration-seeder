@@ -15,14 +15,14 @@ class CreatePackagesTable extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->string('cover_image');
+            $table->string('cover_image')->nullable();
             $table->string('title', 100);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('destination', 100);
-            $table->mediumInteger('price');
-            $table->string('departure_from', 100);
-            $table->date('departure_date');
-            $table->date('return_date');
+            $table->mediumInteger('price')->nullable();
+            $table->string('departure_from', 100)->nullable();
+            $table->date('departure_date')->nullable();
+            $table->date('return_date')->nullable();
             $table->timestamps();
         });
     }
