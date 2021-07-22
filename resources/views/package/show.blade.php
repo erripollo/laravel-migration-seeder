@@ -4,8 +4,8 @@
         <div class="container">
 
                 <div>
-                        
                         <h1>{{$package->title}}</h1>
+                        <a class="btn btn-primary" href="{{route('package.edit', $package->id)}}" role="button">Edit</a>
                         <img class="my-4" width="100%" src="{{$package->cover_image}}" alt="">
                         <div class="d-flex mb-4">
                                 <span class="mr-5"><i class="fa fa-calendar mr-3" aria-hidden="true"></i>{{$package->departure_date}} | {{$package->return_date}}</span>

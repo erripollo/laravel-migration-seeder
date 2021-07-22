@@ -71,7 +71,7 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
-        //
+        return view('package.edit', compact('package'));
     }
 
     /**
@@ -83,7 +83,19 @@ class PackageController extends Controller
      */
     public function update(Request $request, Package $package)
     {
-        //
+        $validate = $request->validate([
+            'title' => 'required | min:5 | max:100',
+            'cover_image' => 'min:5 | max:255',
+            'description' => 'nullable',
+            'destination' => 'nullable | min:5 | max:100',
+            'price' => 'nullable',
+            'departure_from' => 'nullable | min:5 | max:100',
+            'departure_date' => 'nullable',
+            'return_date' => 'nullable'
+        ]);
+
+        $package->update($validate);
+        return redirect()->route('package.index');
     }
 
     /**
