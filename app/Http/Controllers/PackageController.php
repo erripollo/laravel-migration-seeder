@@ -37,7 +37,19 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'title' => 'required | min:5 | max:100',
+            'cover_image' => 'min:5 | max:255',
+            'description' => 'nullable',
+            'destination' => 'nullable | min:5 | max:100',
+            'price' => 'nullable',
+            'departure_from' => 'nullable | min:5 | max:100',
+            'departure_date' => 'nullable',
+            'return_date' => 'nullable'
+        ]);
+
+        Package::create($validate);
+        return redirect()->route('package.index');
     }
 
     /**
